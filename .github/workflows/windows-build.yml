@@ -27,6 +27,14 @@ jobs:
       - name: Build for Windows
         run: flutter build windows --release
 
+      - name: Check if .exe exists
+        run: |
+          if (Test-Path build/windows/runner/Release/*.exe) {
+            Write-Host "EXE file exists ✅"
+          } else {
+            Write-Host "❌ EXE file does NOT exist"
+          }
+
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
         with:
