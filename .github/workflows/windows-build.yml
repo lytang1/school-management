@@ -29,7 +29,7 @@ jobs:
 
       - name: Check if .exe exists
         run: |
-          if (Test-Path \x64\runner\Release\/*.exe) {
+          if (Test-Path build\windows\x64\runner\Release\*.exe) {
             Write-Host "EXE file exists ✅"
           } else {
             Write-Host "❌ EXE file does NOT exist"
@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flutter-windows-exe
-          path: \x64\runner\Release\
+          path: build\windows\x64\runner\Release\
