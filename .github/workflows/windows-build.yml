@@ -7,25 +7,24 @@ on:
 
 jobs:
   build:
-    name: Windows Build
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+        uses: flutter-actions/setup-flutter@v3
         with:
           flutter-version: 'stable'
 
       - name: Enable Windows Desktop
         run: flutter config --enable-windows-desktop
 
-      - name: Install dependencies
+      - name: Get dependencies
         run: flutter pub get
 
-      - name: Build Windows App
+      - name: Build for Windows
         run: flutter build windows --release
 
       - name: Upload EXE artifact
